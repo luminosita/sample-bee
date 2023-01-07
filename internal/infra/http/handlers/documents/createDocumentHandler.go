@@ -2,10 +2,15 @@ package documents
 
 import (
 	"encoding/json"
+	"github.com/google/wire"
 	"github.com/luminosita/honeycomb/pkg/http/ctx"
+	"github.com/luminosita/honeycomb/pkg/http/handlers"
 	"github.com/luminosita/sample-bee/internal/domain/entities"
 	"github.com/luminosita/sample-bee/internal/interfaces/use-cases/documents"
 )
+
+var CreateWireSet = wire.NewSet(NewCreateDocumentHandler,
+	wire.Bind(new(handlers.Handler), new(*CreateDocumentHandler)))
 
 type CreateDocumentHandler struct {
 	cd documents.CreateDocumenter

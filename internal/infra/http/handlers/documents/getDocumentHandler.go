@@ -1,9 +1,14 @@
 package documents
 
 import (
+	"github.com/google/wire"
 	"github.com/luminosita/honeycomb/pkg/http/ctx"
+	"github.com/luminosita/honeycomb/pkg/http/handlers"
 	"github.com/luminosita/sample-bee/internal/interfaces/use-cases/documents"
 )
+
+var GetWireSet = wire.NewSet(NewGetDocumentHandler,
+	wire.Bind(new(handlers.Handler), new(*GetDocumentHandler)))
 
 type GetDocumentHandler struct {
 	cd documents.GetDocumenter

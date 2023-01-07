@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/luminosita/honeycomb/pkg/http"
 	"github.com/luminosita/honeycomb/pkg/server"
-	"github.com/luminosita/sample-bee/internal/bee/factories/handlers"
 )
 
 type Config struct {
@@ -45,11 +44,11 @@ func (*BeeServer) Routes(ctx context.Context) []*http.Route {
 	//router.delete('/posts/:id', authMiddleware, expressRouteAdapter(makeDeletePostController()))
 
 	routes = append(routes, &http.Route{
-		Type: http.GET, Path: "/documents/:id", Handler: handlers.MakeGetDocumentHandler(ctx)})
+		Type: http.GET, Path: "/documents/:id", Handler: MakeGetDocumentHandler(ctx)})
 	routes = append(routes, &http.Route{
-		Type: http.GET, Path: "/documents", Handler: handlers.MakeGetAllDocumentsHandler(ctx)})
+		Type: http.GET, Path: "/documents", Handler: MakeGetAllDocumentsHandler(ctx)})
 	routes = append(routes, &http.Route{
-		Type: http.POST, Path: "/documents", Handler: handlers.MakeCreateDocumentHandler(ctx)})
+		Type: http.POST, Path: "/documents", Handler: MakeCreateDocumentHandler(ctx)})
 
 	return routes
 }

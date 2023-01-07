@@ -3,7 +3,8 @@ module github.com/luminosita/sample-bee
 go 1.19
 
 require (
-	github.com/luminosita/honeycomb v0.0.0-20230107023201-d2403a2ed742
+	github.com/google/wire v0.5.0
+	github.com/luminosita/honeycomb v0.0.0-20230107205403-e7dc677e42a8
 	github.com/spf13/cobra v1.6.1
 	github.com/swaggo/swag v1.8.9
 	go.mongodb.org/mongo-driver v1.11.1
@@ -31,6 +32,7 @@ require (
 	github.com/gofiber/adaptor/v2 v2.1.29 // indirect
 	github.com/gofiber/fiber/v2 v2.41.0 // indirect
 	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
+	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect

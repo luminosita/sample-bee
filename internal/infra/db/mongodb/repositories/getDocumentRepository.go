@@ -2,9 +2,13 @@ package repositories
 
 import (
 	"context"
+	"github.com/google/wire"
 	"github.com/luminosita/honeycomb/pkg/infra/db/mongodb"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 )
+
+var GetWireSet = wire.NewSet(NewGetDocumentRepository,
+	wire.Bind(new(documents.GetDocumentRepositorer), new(*GetDocumentRepository)))
 
 type GetDocumentRepository struct {
 	ctx context.Context

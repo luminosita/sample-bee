@@ -3,11 +3,15 @@ package repositories
 import (
 	"context"
 	"fmt"
+	"github.com/google/wire"
 	"github.com/luminosita/honeycomb/pkg/infra/db/mongodb"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"log"
 )
+
+var GetAllWireSet = wire.NewSet(NewGetAllDocumentsRepository,
+	wire.Bind(new(documents.GetAllDocumentsRepositorer), new(*GetAllDocumentsRepository)))
 
 type GetAllDocumentsRepository struct {
 	ctx context.Context

@@ -1,15 +1,19 @@
 package documents
 
 import (
+	"github.com/google/wire"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 	documents2 "github.com/luminosita/sample-bee/internal/interfaces/use-cases/documents"
 )
+
+var GetAllWireSet = wire.NewSet(NewGetAllDocuments,
+	wire.Bind(new(documents2.GetAllDocumenter), new(*GetAllDocuments)))
 
 type GetAllDocuments struct {
 	repo documents.GetAllDocumentsRepositorer
 }
 
-func NewGetAllDocuments(r documents.GetAllDocumentsRepositorer) documents2.GetAllDocumenter {
+func NewGetAllDocuments(r documents.GetAllDocumentsRepositorer) *GetAllDocuments {
 	return &GetAllDocuments{
 		repo: r,
 	}
