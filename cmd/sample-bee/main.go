@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/luminosita/honeycomb/pkg/cmd"
+	"github.com/luminosita/sample-bee/internal/bee"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -15,8 +17,8 @@ func commandRoot() *cobra.Command {
 			os.Exit(2)
 		},
 	}
-	rootCmd.AddCommand(commandServe())
-	rootCmd.AddCommand(commandVersion())
+	rootCmd.AddCommand(cmd.CommandServe(bee.NewBeeServer(&bee.Config{})))
+	rootCmd.AddCommand(cmd.CommandVersion())
 	return rootCmd
 }
 

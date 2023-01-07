@@ -3,7 +3,7 @@ package repositories
 import (
 	"context"
 	"fmt"
-	"github.com/luminosita/sample-bee/internal/infra/db/mongodb"
+	"github.com/luminosita/honeycomb/pkg/infra/db/mongodb"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"log"
@@ -21,7 +21,7 @@ func NewGetAllDocumentsRepository(ctx context.Context) *GetAllDocumentsRepositor
 
 func (r *GetAllDocumentsRepository) GetAllDocuments(
 	docData *documents.GetAllDocumentsRepositorerRequest) (*documents.GetAllDocumentsRepositorerResponse, error) {
-	col := mongodb.GetDbCollection(r.ctx)
+	col := mongodb.GetDbCollection(r.ctx, DOCUMENTS)
 	cursor, err := col.Find(r.ctx, docData)
 	if err != nil {
 		log.Fatal(err)

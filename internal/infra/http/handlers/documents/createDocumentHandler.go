@@ -2,7 +2,7 @@ package documents
 
 import (
 	"encoding/json"
-	"github.com/luminosita/honeycomb/pkg/http"
+	"github.com/luminosita/honeycomb/pkg/http/ctx"
 	"github.com/luminosita/sample-bee/internal/domain/entities"
 	"github.com/luminosita/sample-bee/internal/interfaces/use-cases/documents"
 )
@@ -28,12 +28,12 @@ func NewCreateDocumentHandler(cd documents.CreateDocumenter) *CreateDocumentHand
 // @Failure      404  {object}  error
 // @Failure      500  {object}  error
 // @Router       /documents [post]
-func (h *CreateDocumentHandler) Handle(req *http.HttpRequest) (*http.HttpResponse, error) {
+func (h *CreateDocumentHandler) Handle(ctx *ctx.Ctx) error {
 	doc := &entities.Document{}
 
-	err := json.Unmarshal(req.Body, doc)
+	err := json.Unmarshal(ctx.Body, doc)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	res, err := h.cd.Execute(&documents.CreateDocumenterRequest{
@@ -41,8 +41,8 @@ func (h *CreateDocumentHandler) Handle(req *http.HttpRequest) (*http.HttpRespons
 	})
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return http.Ok(res.DocumentId), nil
+	return ctx.SendString(res.DocumentId)
 }

@@ -1,5 +1,5 @@
 config:
-  - name: dev-config
+  - name: config
     path: "configs/config.dev.yaml"
 fiber:
   - name: fiber                                              # Required

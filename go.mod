@@ -3,13 +3,8 @@ module github.com/luminosita/sample-bee
 go 1.19
 
 require (
-	github.com/luminosita/honeycomb v0.1.0
-	github.com/rookie-ninja/rk-boot/v2 v2.2.15
-	github.com/rookie-ninja/rk-db/mongodb v1.2.14
-	github.com/rookie-ninja/rk-entry/v2 v2.2.16
+	github.com/luminosita/honeycomb v0.0.0-20230107023201-d2403a2ed742
 	github.com/spf13/cobra v1.6.1
-	github.com/spf13/pflag v1.0.5
-	github.com/spf13/viper v1.14.0
 	github.com/swaggo/swag v1.8.9
 	go.mongodb.org/mongo-driver v1.11.1
 )
@@ -62,6 +57,9 @@ require (
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/rookie-ninja/rk-boot/v2 v2.2.15 // indirect
+	github.com/rookie-ninja/rk-db/mongodb v1.2.14 // indirect
+	github.com/rookie-ninja/rk-entry/v2 v2.2.16 // indirect
 	github.com/rookie-ninja/rk-fiber v1.2.15 // indirect
 	github.com/rookie-ninja/rk-logger v1.2.13 // indirect
 	github.com/rookie-ninja/rk-query v1.2.14 // indirect
@@ -69,6 +67,8 @@ require (
 	github.com/spf13/afero v1.9.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/viper v1.14.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.43.0 // indirect

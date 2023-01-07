@@ -1,7 +1,7 @@
 package documents
 
 import (
-	"github.com/luminosita/honeycomb/pkg/http"
+	"github.com/luminosita/honeycomb/pkg/http/ctx"
 	"github.com/luminosita/sample-bee/internal/interfaces/use-cases/documents"
 )
 
@@ -26,12 +26,12 @@ func NewGetAllDocumentsHandler(cd documents.GetAllDocumenter) *GetAllDocumentsHa
 // @Failure      404  {object}  error
 // @Failure      500  {object}  error
 // @Router       /documents [get]
-func (h *GetAllDocumentsHandler) Handle(_ *http.HttpRequest) (*http.HttpResponse, error) {
+func (h *GetAllDocumentsHandler) Handle(ctx *ctx.Ctx) error {
 	res, err := h.cd.Execute(&documents.GetAllDocumenterRequest{})
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return http.Ok(res.Documents), nil
+	return ctx.SendResponse(res.Documents)
 }

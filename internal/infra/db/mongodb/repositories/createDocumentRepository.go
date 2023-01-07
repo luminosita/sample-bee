@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"context"
-	"github.com/luminosita/sample-bee/internal/infra/db/mongodb"
+	"github.com/luminosita/honeycomb/pkg/infra/db/mongodb"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 )
 
@@ -18,7 +18,7 @@ func NewCreateDocumentRepository(ctx context.Context) *CreateDocumentRepository 
 
 func (r *CreateDocumentRepository) CreateDocument(
 	docData *documents.CreateDocumentRepositorerRequest) (*documents.CreateDocumentRepositorerResponse, error) {
-	col := mongodb.GetDbCollection(r.ctx)
+	col := mongodb.GetDbCollection(r.ctx, DOCUMENTS)
 	_, err := col.InsertOne(r.ctx, docData) //, createdAt: new Date());
 	if err != nil {
 		return nil, err

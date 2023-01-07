@@ -9,15 +9,15 @@ import (
 
 func MakeGetDocumentHandler(ctx context.Context) handlers.Handler {
 	useCase := use_cases.MakeGetDocument(ctx)
-	return documents.NewGetDocumentHandler(useCase)
+	return documents.NewGetDocumentHandler(useCase).Handle
 }
 
 func MakeGetAllDocumentsHandler(ctx context.Context) handlers.Handler {
 	useCase := use_cases.MakeGetAllDocuments(ctx)
-	return documents.NewGetAllDocumentsHandler(useCase)
+	return documents.NewGetAllDocumentsHandler(useCase).Handle
 }
 
 func MakeCreateDocumentHandler(ctx context.Context) handlers.Handler {
 	useCase := use_cases.MakeCreateDocument(ctx)
-	return documents.NewCreateDocumentHandler(useCase)
+	return documents.NewCreateDocumentHandler(useCase).Handle
 }

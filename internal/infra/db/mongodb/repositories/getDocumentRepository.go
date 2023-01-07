@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"context"
-	"github.com/luminosita/sample-bee/internal/infra/db/mongodb"
+	"github.com/luminosita/honeycomb/pkg/infra/db/mongodb"
 	"github.com/luminosita/sample-bee/internal/interfaces/respositories/documents"
 )
 
@@ -18,7 +18,7 @@ func NewGetDocumentRepository(ctx context.Context) *GetDocumentRepository {
 
 func (r *GetDocumentRepository) GetDocument(
 	docData *documents.GetDocumentRepositorerRequest) (*documents.GetDocumentRepositorerResponse, error) {
-	col := mongodb.GetDbCollection(r.ctx)
+	col := mongodb.GetDbCollection(r.ctx, DOCUMENTS)
 	_ = col.FindOne(r.ctx, docData)
 
 	return nil, nil
